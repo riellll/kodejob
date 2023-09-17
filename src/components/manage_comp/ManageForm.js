@@ -1,33 +1,27 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-
+import { usePathname, useRouter } from "next/navigation";
 import { BsTrash3Fill } from "react-icons/bs";
 import { TbEdit } from "react-icons/tb";
+import { deletePost } from "@/actions/Postjob.action";
 // import ManageLoading from "@/components/manage_comp/ManageLoading";
 // import { AuthRequiredError } from "@/lib/exceptions";
 
 const ManageForm = ({ creatorData }) => {
-
+  const pathname = usePathname();
+  const router = useRouter();
   const handleDelete = async (e) => {
     console.log(e);
     const confirmed = confirm("Are you sure");
 
-    if (confirmed) {
-      try {
-        await fetch(`/api/job/id/${e}`, {
-          method: "DELETE",
-        });
-        mutate();
-      } catch (error) {
-        console.log(error);
-      }
-    }
+    if (!confirmed) return;
+    await deletePost(e, pathname);
+    router.refresh();
   };
 
   return (
     <>
-
       <table className="w-full table-auto rounded-sm">
         <tbody>
           {creatorData?.map((item) => (

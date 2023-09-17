@@ -4,7 +4,8 @@ import Link from "next/link";
 import { BsArrowLeft } from "react-icons/bs";
 import Search from "@/components/shared/Search";
 import IndividualJob from "@/fetchData/IndividualJob";
-// import Spinner from "@/components/shared/Spinner";
+import { Suspense } from "react";
+import Spinner from "@/components/shared/Spinner";
 
 export async function generateMetadata({ params }) {
   const job = await IndividualJob(params.id);
@@ -36,7 +37,9 @@ const Show = async ({ params }) => {
             <span className="">Back</span>
           </Link>
         </div>
+        <Suspense fallback={<Spinner/>}>
         <ShowJobs job={job} />
+        </Suspense>
       </main>
     </>
   );

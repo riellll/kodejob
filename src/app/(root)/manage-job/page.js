@@ -3,14 +3,16 @@
 // import { BsTrash3Fill } from "react-icons/bs";
 // import { TbEdit } from "react-icons/tb";
 
-// import { getServerSession } from "next-auth";
-
+import { getServerSession } from "next-auth";
 
 import ManageForm from "@/components/manage_comp/ManageForm";
 import { redirect } from "next/navigation";
-// import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+
 import Search from "@/components/shared/Search";
 import CreatorPostjob from "@/fetchData/CreatorPostjob";
+import { Suspense } from "react";
+import ManageLoading from "@/components/manage_comp/ManageLoading";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 // import jobData from "@/data/Data";
 // import ManageLoading from "@/app/components/ManageLoading";
 // import { useRouter } from "next/navigation";
@@ -23,13 +25,12 @@ export const metadata = {
 };
 
 const Mange_Job = async () => {
-  const creator = '6505c0a7dd2616289b57e7d2'
-  const data = await CreatorPostjob(creator)
-  // const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
+  const data = await CreatorPostjob(session.user.id);
   // console.log(session);
-  // if (!session) {
-    // redirect("/login");
-
+  if (!session) {
+    redirect("/login");
+  }
 
   return (
     <>
@@ -44,7 +45,9 @@ const Mange_Job = async () => {
                 Manage Jobs
               </h1>
             </header>
-            <ManageForm creatorData={data} />
+            <Suspense fallback={<ManageLoading />}>
+              <ManageForm creatorData={data} />
+            </Suspense>
           </div>
         </div>
       </main>

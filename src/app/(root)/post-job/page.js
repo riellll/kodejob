@@ -1,8 +1,6 @@
-
-
-// import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Postjob_Comp from "@/components/post_comp/Postjob_Comp";
-// import { getServerSession } from "next-auth";
+import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
 export const metadata = {
@@ -12,15 +10,14 @@ export const metadata = {
 
 const Post_Job = async () => {
   // const [image, setImage] = useState([]);
-// 
-  // const session = await getServerSession(authOptions);
-  // console.log(session);
-  // if (!session) {
-  //   redirect("/login");
-  // }
+  //
+  const session = await getServerSession(authOptions);
+  // console.log(session.user.id);
+  if (!session) {
+    redirect("/login");
+  }
 
-
-  return <Postjob_Comp sessionData={'6505c0a7dd2616289b57e7d2'} />;
+  return <Postjob_Comp sessionData={session.user.id} />;
 };
 
 export default Post_Job;

@@ -1,13 +1,13 @@
-
 // import Image from "next/image"
 // import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 
 const Hero = async () => {
+  const session = await getServerSession(authOptions);
 
-  // const session = await getServerSession(authOptions);
-  const session = false;
   // console.log(session);
   return (
     <section className="relative h-72 bg-laravel bg-indigo-600 flex flex-col justify-center align-center text-center space-y-4 mb-4 bg-center">
@@ -24,10 +24,18 @@ const Hero = async () => {
           Find or post Web Developer jobs & projects
         </p>
         <div>
-           {session ? <h1 className="text-white font-medium">Wellcome {session.user.name} !!</h1> : <Link
-          href="/login"
-          className="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
-          >Login to Post a Job</Link>}
+          {session ? (
+            <h1 className="text-white font-medium">
+              Wellcome {session.user.name} !!
+            </h1>
+          ) : (
+            <Link
+              href="/login"
+              className="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
+            >
+              Login to Post a Job
+            </Link>
+          )}
         </div>
       </div>
     </section>

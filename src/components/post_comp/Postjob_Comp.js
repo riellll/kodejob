@@ -1,50 +1,50 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { useRouter, redirect } from "next/navigation";
+import { useRouter, redirect, usePathname } from "next/navigation";
 import Link from "next/link";
-import { postJobs } from "@/actions/Postjob";
+import { postJobs } from "@/actions/Postjob.action";
 
 // import Spinner from "../Spinner";
 
-const Postjob_Comp = ({sessionData}) => {
-    const [image, setImage] = useState([]);
-
-    const router = useRouter();
-   /*  const session = useSession();
+const Postjob_Comp = ({ sessionData }) => {
+  const [image, setImage] = useState([]);
+  const pathname = usePathname();
+  const router = useRouter();
+  /*  const session = useSession();
     console.log(session); */
-    // console.log(creator?.user.id); 
+  // console.log(creator?.user.id);
 
- /*    const {data: session} = useSession({
+  /*    const {data: session} = useSession({
       required: true,
       onUnauthenticated() {
         redirect('/login')
       }
     }); */
-    // console.log(session);
-    // if (session === 'undefined') throw new AuthRequiredError("Error to fetch Data");
-    const fileImage = async (e) => {
-        // console.log(e.target.files[0]);
-        if(!e.target.files[0]){
-          setImage([]) 
-          return
-        }
-        let reader = new FileReader();
-        reader.readAsDataURL(e.target.files[0]);
-        reader.onload = () => {
-          // console.log(reader.result);
-          setImage(reader.result);
-        };
-        reader.onerror = (error) => {
-          alert("error image", error);
-        };
-      };
-    
-      const handleSubmit = async (formData) => {
-        await postJobs(formData, image, sessionData)
-        alert("Job is posted");
-        router.push("/");
-      /*   try {
+  // console.log(pathname);
+  // if (session === 'undefined') throw new AuthRequiredError("Error to fetch Data");
+  const fileImage = async (e) => {
+    // console.log(e.target.files[0]);
+    if (!e.target.files[0]) {
+      setImage([]);
+      return;
+    }
+    let reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      // console.log(reader.result);
+      setImage(reader.result);
+    };
+    reader.onerror = (error) => {
+      alert("error image", error);
+    };
+  };
+
+  const handleSubmit = async (formData) => {
+    await postJobs(formData, image, sessionData, pathname);
+    alert("Job is posted");
+    router.push("/");
+    /*   try {
           await fetch(`/api/job`, {
             method: "POST",
             body: JSON.stringify({
@@ -62,11 +62,11 @@ const Postjob_Comp = ({sessionData}) => {
         } catch (err) {
           console.log(err);
         } */
-      };
+  };
 
   return (
     <>
-     <main>
+      <main>
         <div className="mx-4 mb-36">
           <div className="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24">
             <header className="text-center">
@@ -159,14 +159,16 @@ const Postjob_Comp = ({sessionData}) => {
                   name="logo"
                   onChange={fileImage}
                 />
-                {image[0] ? <Image
-                className="w-60 h-auto mb-6"
-                src={image}
-                alt=""
-                width={100}
-                height={100}
-                priority
-              /> : undefined}
+                {image[0] ? (
+                  <Image
+                    className="w-60 h-auto mb-6"
+                    src={image}
+                    alt=""
+                    width={100}
+                    height={100}
+                    priority
+                  />
+                ) : undefined}
               </div>
 
               <div className="mb-6">
@@ -189,7 +191,10 @@ const Postjob_Comp = ({sessionData}) => {
                   Create Job
                 </button>
 
-                <Link href="/" className="text-black ml-4 py-2.5 px-6 rounded hover:bg-black hover:text-white">
+                <Link
+                  href="/"
+                  className="text-black ml-4 py-2.5 px-6 rounded hover:bg-black hover:text-white"
+                >
                   Back
                 </Link>
               </div>
@@ -198,7 +203,7 @@ const Postjob_Comp = ({sessionData}) => {
         </div>
       </main>
     </>
-  )
-}
+  );
+};
 
-export default Postjob_Comp
+export default Postjob_Comp;
