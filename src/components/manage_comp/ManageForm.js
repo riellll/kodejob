@@ -19,7 +19,7 @@ const ManageForm = ({ creatorData }) => {
     await deletePost(e, pathname);
     router.refresh();
   };
-
+// console.log(!creatorData[0])
   return (
     <>
       <table className="w-full table-auto rounded-sm">
@@ -57,6 +57,10 @@ const ManageForm = ({ creatorData }) => {
               </td>
             </tr>
           ))}
+          {!creatorData[0] && <tr className="border-gray-300">
+              <td className="px-4 py-8 border-t border-b border-gray-300 text-lg text-center">
+                <h1 className="font-semibold">No job posted yet!!!</h1>
+              </td> </tr>}
         </tbody>
       </table>
       {/* } */}

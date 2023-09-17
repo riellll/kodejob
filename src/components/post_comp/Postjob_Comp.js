@@ -41,7 +41,7 @@ const Postjob_Comp = ({ sessionData }) => {
   };
 
   const handleSubmit = async (formData) => {
-    await postJobs(formData, image, sessionData, pathname);
+    await postJobs(formData, image, sessionData.toString(), pathname);
     alert("Job is posted");
     router.push("/");
     /*   try {

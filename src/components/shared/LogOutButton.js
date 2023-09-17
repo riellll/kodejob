@@ -14,21 +14,21 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 
-const LogOutButton = ({userName}) => {
+const LogOutButton = ({session}) => {
   return (
     <Menubar>
       <MenubarMenu>
         <MenubarTrigger>
           <Image
             className="w-12 h-12 rounded-full cursor-pointer"
-            src={testImage}
+            src={session.user.image || testImage}
             alt="user photo"
             width={300}
             height={300}
           />
         </MenubarTrigger>
         <MenubarContent>
-          <MenubarLabel>{userName}</MenubarLabel>
+          <MenubarLabel>{session.user.name}</MenubarLabel>
           <MenubarItem>
             <Link
               href={`/manage-job`}
