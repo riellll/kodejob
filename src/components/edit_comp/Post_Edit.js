@@ -39,6 +39,7 @@ const Post_Edit = ({ dataJob, dataId }) => {
   };
 
   // console.log(dataJob.tags);
+  const tags = [...dataJob?.tags];
 
   return (
     <form action={handleSubmit}>
@@ -113,7 +114,7 @@ const Post_Edit = ({ dataJob, dataId }) => {
           className="border border-gray-200 rounded p-2 w-full"
           name="tags"
           placeholder="Example: Laravel, Backend, Postgres, etc"
-          defaultValue={[...dataJob.tags]}
+          defaultValue={tags}
         />
       </div>
 
