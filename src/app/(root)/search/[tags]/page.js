@@ -69,7 +69,7 @@ const SearchTag = async ({ params }) => {
           <span className="">Back</span>
         </Link>
       </div>
-      {/* <SearchJobs search={job} tag={searchTag} /> */}
+   
       <div className="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4 mb-48">
         {/* {isLoading && <Skeleton />} */}
         {filterData?.length === 0 && (
