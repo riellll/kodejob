@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server";
+/* import { NextResponse } from "next/server";
 import connect from "@/utils/db";
 import User from "@/model/User";
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 
 export const POST = async (request) => {
   const { name, email, password } = await request.json();
@@ -28,3 +28,4 @@ export const POST = async (request) => {
     });
   }
 };
+ */
