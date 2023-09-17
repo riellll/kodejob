@@ -26,11 +26,11 @@ export const metadata = {
 
 const Mange_Job = async () => {
   const session = await getServerSession(authOptions);
-  const data = await CreatorPostjob(session.user.id);
   // console.log(session);
   if (!session) {
     redirect("/login");
   }
+  const data = await CreatorPostjob(session.user.id);
 
   return (
     <>

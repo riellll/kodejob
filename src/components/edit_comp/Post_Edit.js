@@ -4,12 +4,11 @@ import { useState } from "react";
 import { redirect, useRouter } from "next/navigation";
 // import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { editJobs } from "@/actions/Postjob.action";
+import { editJobs } from "@/lib/actions/Postjob.action";
 
 const Post_Edit = ({ dataJob, dataId }) => {
   const [image, setImage] = useState([]);
   const router = useRouter();
- 
 
   const fileImage = async (e) => {
     // console.log(e.target.files[0]);
@@ -30,12 +29,11 @@ const Post_Edit = ({ dataJob, dataId }) => {
 
   const handleSubmit = async (formData) => {
     const logo = image[0] ? image : dataJob.logo;
- 
-    await editJobs(formData, logo, dataJob._id)
 
-      alert("Job is posted");
-      router.push("/");
-  
+    await editJobs(formData, logo, dataJob._id);
+
+    alert("Job is posted");
+    router.push("/");
   };
 
   // console.log(dataJob.tags);

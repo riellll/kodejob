@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter, redirect, usePathname } from "next/navigation";
 import Link from "next/link";
-import { postJobs } from "@/actions/Postjob.action";
+import { postJobs } from "@/lib/actions/Postjob.action";
 
 // import Spinner from "../Spinner";
 

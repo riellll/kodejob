@@ -4,11 +4,9 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import User from "@/model/User";
 import connect from "@/utils/db";
 
-
-
 // import bcrypt from "bcryptjs";
 
-// import { NextAuthOptions } from "next-auth";
+import { NextAuthOptions } from "next-auth";
 
 export const authOptions = {
   // Configure one or more authentication providers
@@ -57,7 +55,7 @@ export const authOptions = {
         //   console.log(sessionUser);
         session.user.id = sessionUser._id.toString();
         // console.log(session);
-// 
+        //
         return session;
       } catch (error) {
         // console.log("Error checking if user existsa: ", error.message);

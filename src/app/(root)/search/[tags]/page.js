@@ -7,13 +7,14 @@ import { BsArrowLeft } from "react-icons/bs";
 import Link from "next/link";
 import Hero from "@/components/shared/Hero";
 import Search from "@/components/shared/Search";
-// import { searchPost } from "@/actions/Postjob.action";
+
 // import jobData from "@/data/Data";
 // import useSWR from "swr";
 // import { useState, useEffect } from "react";
 import Image from "next/image";
 import { MdLocationOn } from "react-icons/md";
-import jobData from "@/fetchData/Data";
+import { searchPost } from "@/lib/actions/Postjob.action";
+// import jobData from "@/fetchData/Data";
 // import Skeleton from "@/app/components/Skeleton";
 export async function generateMetadata({ params }) {
   return {
@@ -24,30 +25,32 @@ export async function generateMetadata({ params }) {
 
 const SearchTag = async ({ params }) => {
   const { tags: searchTag } = params;
-  const jobs = await jobData()
- 
+  const jobs = await searchPost();
+
   const filterData = jobs?.filter(
     (item, index) =>
       item.tags.includes(searchTag?.toLowerCase()) ||
-      item.data.location
+      item.data
+        .get("location")
         .toLowerCase()
         .split(",")
         .join(" ")
         .split(" ")
         .includes(searchTag?.toLowerCase()) ||
-      item.data.comapny
+      item.data
+        .get("comapny")
         .toLowerCase()
         .split(",")
         .join(" ")
         .split(" ")
         .includes(searchTag?.toLowerCase()) ||
-      item.data.comapny.toLowerCase() ===
+      item.data.get("comapny").toLowerCase() ===
         searchTag?.toLowerCase().split("%20").join(" ") ||
-      item.data.title.toLowerCase() ===
+      item.data.get('title').toLowerCase() ===
         searchTag?.toLowerCase().split("%20").join(" ")
   );
 
-  // console.log(filterData)
+  // console.log(jobs)
   return (
     <>
       <Hero />
@@ -69,7 +72,7 @@ const SearchTag = async ({ params }) => {
           <span className="">Back</span>
         </Link>
       </div>
-   
+
       <div className="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4 mb-48">
         {/* {isLoading && <Skeleton />} */}
         {filterData?.length === 0 && (
@@ -97,11 +100,11 @@ const SearchTag = async ({ params }) => {
                 <div>
                   <h3 className="text-2xl">
                     <Link href={`/admin/show/${item._id}`}>
-                      {item.data.title}
+                      {item.data.get("title")}
                     </Link>
                   </h3>
                   <div className="text-xl font-bold mb-4">
-                    {item.data.comapny}
+                    {item.data.get("comapny")}
                   </div>
                   <ul className="flex">
                     {item.tags.map((tag) => (
@@ -117,7 +120,7 @@ const SearchTag = async ({ params }) => {
                     <span className="text-2xl">
                       <MdLocationOn />
                     </span>
-                    {item.data.location}
+                    {item.data.get("location")}
                   </div>
                 </div>
               </div>

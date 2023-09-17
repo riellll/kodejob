@@ -107,8 +107,10 @@ export const searchPost = async () => {
   try {
     connect();
 
-    const post = await Job.find();
-    return JSON.stringify(post);
+    return await Job.find();
+    // const res = JSON.stringify(post);
+    // console.log(res)
+   
   } catch (error) {
     throw new Error(`Failed to create thread: ${error.message}`);
   }

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { BsTrash3Fill } from "react-icons/bs";
 import { TbEdit } from "react-icons/tb";
-import { deletePost } from "@/actions/Postjob.action";
+import { deletePost } from "@/lib/actions/Postjob.action";
 // import ManageLoading from "@/components/manage_comp/ManageLoading";
 // import { AuthRequiredError } from "@/lib/exceptions";
 
@@ -19,7 +19,7 @@ const ManageForm = ({ creatorData }) => {
     await deletePost(e, pathname);
     router.refresh();
   };
-// console.log(!creatorData[0])
+  // console.log(!creatorData[0])
   return (
     <>
       <table className="w-full table-auto rounded-sm">
@@ -57,10 +57,13 @@ const ManageForm = ({ creatorData }) => {
               </td>
             </tr>
           ))}
-          {!creatorData[0] && <tr className="border-gray-300">
+          {!creatorData[0] && (
+            <tr className="border-gray-300">
               <td className="px-4 py-8 border-t border-b border-gray-300 text-lg text-center">
                 <h1 className="font-semibold">No job posted yet!!!</h1>
-              </td> </tr>}
+              </td>{" "}
+            </tr>
+          )}
         </tbody>
       </table>
       {/* } */}
