@@ -19,10 +19,12 @@ const Navbar = async () => {
   // console.log(session)
 
   return (
-    <nav className="bg-white border-gray-200 dark:bg-slate-950">
+    <nav className="bg-white border-gray-200 dark:bg-slate-900">
       <div className="flex flex-wrap items-center justify-between pb-4">
         <div href="/" className="flex items-center">
-        <h1 class="text-8xl bg-laravel bg-indigo-600 px-3 pb-1 w-fit font-bold leading-none tracking-tight lg:text-8xl text-white dark:bg-gradient-to-r dark:from-teal-500 dark:via-teal-600 dark:to-teal-700">K<span className="text-black">J</span></h1>
+          <Link href={'/'}>
+        <h1 class="text-8xl bg-laravel bg-indigo-600 px-3 pb-1 w-fit font-bold leading-none tracking-tight md:text-8xl min-[320px]:text-7xl text-white dark:bg-gradient-to-r dark:from-teal-500 dark:via-teal-600 dark:to-teal-700">K<span className="text-black">J</span></h1>
+          </Link>
         </div>
 
         {/* {session.status === 'loading' ? <div><h1>...</h1></div> : undefined} */}
@@ -35,14 +37,14 @@ const Navbar = async () => {
               <li>
                 <Link
                   href="/login"
-                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white dark:bg-gradient-to-r dark:from-teal-500 dark:via-teal-600 dark:to-teal-700"
+                  className="text-white bg-gradient-to-r from-indigo-500 via-indigo-600 to-indigo-700 hover:bg-gradient-to-br focus:ring-4 dark:from-teal-500 dark:via-teal-600 dark:to-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                 >
                   Login
                 </Link>
               </li>
             </ul>
           ) : (
-            <ul className="font-medium flex flex-col cursor-pointer p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <ul className="font-medium flex flex-col cursor-pointer md:p-0 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-slate-900">
               {/* <Popover session={session} /> */}
               <LogOutButton session={session}/>
             </ul>

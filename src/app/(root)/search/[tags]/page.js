@@ -64,12 +64,12 @@ const SearchTag = async ({ params }) => {
       <div className="flex justify-self-start">
         <Link
           href="/"
-          className="flex gap-1 justify-self-start text-black ml-4 mb-4"
+          className="flex gap-1 justify-self-start text-black dark:text-white ml-4 mb-4"
         >
           <span className="pt-1">
             <BsArrowLeft />
           </span>{" "}
-          <span className="">Back</span>
+          <span>Back</span>
         </Link>
       </div>
 
@@ -85,7 +85,7 @@ const SearchTag = async ({ params }) => {
         {filterData?.map((item) => {
           return (
             <div
-              className="bg-gray-50 border border-gray-200 rounded p-6"
+              className="bg-gray-50 border border-gray-200 rounded p-6 dark:bg-gray-900 dark:border-gray-700"
               key={item._id}
             >
               <div className="flex">
@@ -99,7 +99,7 @@ const SearchTag = async ({ params }) => {
                 />
                 <div>
                   <h3 className="text-2xl">
-                    <Link href={`/admin/show/${item._id}`}>
+                    <Link href={`/show/${item._id}`}>
                       {item.data.get("title")}
                     </Link>
                   </h3>

@@ -31,7 +31,7 @@ const Mange_Job = async () => {
   if (!session) {
     redirect("/login");
   }
-  const data = await managePost(session.user.id)
+  const data = await JSON.parse(JSON.stringify(await managePost(session.user.id)))
   // try {
     
   //   const data = await CreatorPostjob(session.user.id);
@@ -49,7 +49,7 @@ const Mange_Job = async () => {
         <Search />
 
         <div className="mx-4">
-          <div className="bg-gray-50 border border-gray-200 p-10 rounded">
+          <div className="bg-gray-50 border border-gray-200 p-10 rounded dark:bg-gray-900 dark:border-gray-700">
             <header>
               <h1 className="text-3xl text-center font-bold my-6 uppercase">
                 Manage Jobs

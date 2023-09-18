@@ -150,13 +150,12 @@ const Post_Edit = ({ dataJob, dataId }) => {
       </div>
 
       <div className="mb-6">
-        <button className="bg-laravel text-white rounded py-2 px-4 bg-indigo-600 hover:bg-black text-lg">
+        <button className="bg-laravel text-white bg-indigo-600 rounded py-2 px-4 hover:bg-black dark:bg-gradient-to-r dark:from-teal-500 dark:via-teal-600 dark:to-teal-700">
           Update Job
         </button>
-
         <Link
           href="/"
-          className="text-black ml-4 py-2.5 px-6 rounded hover:bg-black hover:text-white"
+          className="text-black ml-4 py-2.5 px-6 rounded hover:bg-black hover:text-white dark:text-white dark:hover:text-white"
         >
           Back
         </Link>

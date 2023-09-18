@@ -23,7 +23,7 @@ const PaginationComp = ({ jobPage, page }) => {
               <button
                 className={
                   1 == page
-                    ? "flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-400  border bg-gray-200 border-gray-300 rounded-l-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                    ? "flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-400  border bg-gray-200 border-gray-300 rounded-l-lg dark:bg-gray-600 dark:border-gray-700 dark:text-gray-500"
                     : "flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 }
                 disabled={1 == page ? true : false}
@@ -54,7 +54,7 @@ const PaginationComp = ({ jobPage, page }) => {
               <button
                 className={
                   jobPage?.pageCount == page
-                    ? "flex items-center justify-center px-3 h-8 leading-tight text-gray-400 bg-gray-200 border border-gray-300 rounded-r-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                    ? "flex items-center justify-center px-3 h-8 leading-tight text-gray-400 bg-gray-200 border border-gray-300 rounded-r-lg dark:bg-gray-600 dark:border-gray-700 dark:text-gray-500 "
                     : "flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 }
                 disabled={jobPage?.pageCount == page ? true : false}

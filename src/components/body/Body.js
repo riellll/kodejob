@@ -8,7 +8,7 @@ import PaginationComp from "./PaginationComp";
 
 // import useSWR from "swr";
 // import Skeleton from "../shared/Skeleton";
-// import { MdLocationOn } from "react-icons/md";
+import { MdLocationOn } from "react-icons/md";
 
 // import { AuthRequiredError } from "@/lib/exceptions";
 
@@ -23,7 +23,7 @@ const Body = ({ jobs, page }) => {
         {jobs?.jobRec.map((item) => {
           return (
             <div
-              className="bg-gray-100 border border-gray-200 rounded p-6 dark:bg-gray-800 dark:border-gray-700"
+              className="bg-gray-100 border border-gray-200 rounded p-6 dark:bg-gray-900 dark:border-gray-700"
               key={item._id}
             >
               <div className="flex">
@@ -56,7 +56,7 @@ const Body = ({ jobs, page }) => {
                   </ul>
                   <div className="flex text-lg my-4">
                     <span className="text-2xl">
-                      {/* <MdLocationOn /> */}
+                      <MdLocationOn />
                     </span>
                     {item?.data.location}
                   </div>

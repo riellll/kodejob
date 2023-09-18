@@ -17,7 +17,7 @@ const ShowJobs = ({ job }) => {
     <>
       {job ? (
         <div className="mx-4 mb-48">
-          <div className="bg-gray-50 border border-gray-200 p-10 rounded">
+          <div className="bg-gray-50 border border-gray-200 p-10 rounded dark:bg-gray-900 dark:border-gray-700">
             <div className="flex flex-col items-center text-center">
               <Image
                 className="w-60 h-auto mb-6"

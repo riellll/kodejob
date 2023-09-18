@@ -25,7 +25,6 @@ const Search = () => {
             name="search"
             className="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none text-gray-900 border border-gray-400 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
             placeholder="Search Web Developer jobs..."
-            required
           />
           <div className="absolute top-2 right-2">
             <button

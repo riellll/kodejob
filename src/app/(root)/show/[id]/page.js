@@ -29,7 +29,7 @@ const Show = async ({ params }) => {
         <div className="flex justify-self-start">
           <Link
             href="/"
-            className="flex gap-1 justify-self-start text-black ml-4 mb-4"
+            className="flex gap-1 justify-self-start text-black dark:text-white ml-4 mb-4"
           >
             <span className="pt-1">
               <BsArrowLeft />
