@@ -23,7 +23,7 @@ const Body = ({ jobs, page }) => {
         {jobs?.jobRec.map((item) => {
           return (
             <div
-              className="bg-gray-100 border border-gray-200 rounded p-6 dark:bg-gray-900 dark:border-gray-700"
+              className="bg-gray-100 border border-gray-200 rounded p-6 dark:bg-gray-700 dark:border-gray-600"
               key={item._id}
             >
               <div className="flex">
