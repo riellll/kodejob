@@ -2,14 +2,11 @@ import Job from "@/model/Job";
 import connect from "@/utils/db";
 import { NextResponse } from "next/server";
 
-
-
-
 export const GET = async (request) => {
   try {
     await connect();
 
-    const jobRec = await Job.find().populate('creator');
+    const jobRec = await Job.find();
 
     return new NextResponse(JSON.stringify(jobRec), { status: 200 });
   } catch (err) {

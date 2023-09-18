@@ -3,8 +3,7 @@ import mongoose, { Schema } from "mongoose";
 const JobSchema = new Schema(
   {
     creator: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      type: String,
     },
     web_url: {
       type: String,

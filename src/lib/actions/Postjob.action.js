@@ -1,5 +1,6 @@
 "use server";
 
+
 import Job from "@/model/Job";
 import connect from "@/utils/db";
 import { revalidatePath, revalidateTag } from "next/cache";
@@ -108,6 +109,19 @@ export const searchPost = async () => {
     connect();
 
     return await Job.find();
+    // const res = JSON.stringify(post);
+    // console.log(res)
+   
+  } catch (error) {
+    throw new Error(`Failed to create thread: ${error.message}`);
+  }
+};
+
+export const managePost = async (user) => {
+  try {
+    connect();
+
+    return await Job.find({ creator: user })
     // const res = JSON.stringify(post);
     // console.log(res)
    

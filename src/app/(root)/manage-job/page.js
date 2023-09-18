@@ -13,6 +13,7 @@ import CreatorPostjob from "@/fetchData/CreatorPostjob";
 import { Suspense } from "react";
 import ManageLoading from "@/components/manage_comp/ManageLoading";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { managePost } from "@/lib/actions/Postjob.action";
 // import jobData from "@/data/Data";
 // import ManageLoading from "@/app/components/ManageLoading";
 // import { useRouter } from "next/navigation";
@@ -26,11 +27,20 @@ export const metadata = {
 
 const Mange_Job = async () => {
   const session = await getServerSession(authOptions);
-  // console.log(session);
+  // console.log(typeof session.user.id);
   if (!session) {
     redirect("/login");
   }
-  const data = await CreatorPostjob(session.user.id);
+  const data = await managePost(session.user.id)
+  // try {
+    
+  //   const data = await CreatorPostjob(session.user.id);
+  //   console.log(data);
+  // } catch (error) {
+    
+    //   console.log('jkjaajajaj'+error);
+    // }
+      // console.log(data);
 
   return (
     <>

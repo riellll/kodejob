@@ -2,16 +2,13 @@ import Job from "@/model/Job";
 import connect from "@/utils/db";
 import { NextResponse } from "next/server";
 
-
-
 export const GET = async (request, { params }) => {
   const { id } = params;
 
-  
   try {
     await connect();
 
-    const jobId = await Job.findById(id).populate("creator");
+    const jobId = await Job.findById(id);
     // revalidatePath(path)
     return new NextResponse(JSON.stringify(jobId), { status: 200 });
   } catch (error) {

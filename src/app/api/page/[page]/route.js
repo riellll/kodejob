@@ -13,10 +13,7 @@ export const GET = async (request, { params }) => {
 
     const count = await Job.estimatedDocumentCount({}, { maxTimeMS: 5000 });
 
-    const jobRec = await Job.find()
-      .populate({ path: "creator", model: User })
-      .limit(itemPage)
-      .skip(skip);
+    const jobRec = await Job.find().limit(itemPage).skip(skip);
 
     /*    // const [count, jobRec] = await Promise.all([countPromise, jobRecPromise]); */
 

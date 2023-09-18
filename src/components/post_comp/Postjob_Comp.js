@@ -21,7 +21,7 @@ const Postjob_Comp = ({ sessionData }) => {
         redirect('/login')
       }
     }); */
-  // console.log(pathname);
+  console.log(sessionData);
   // if (session === 'undefined') throw new AuthRequiredError("Error to fetch Data");
   const fileImage = async (e) => {
     // console.log(e.target.files[0]);
@@ -42,6 +42,7 @@ const Postjob_Comp = ({ sessionData }) => {
 
   const handleSubmit = async (formData) => {
     await postJobs(formData, image, sessionData.toString(), pathname);
+
     alert("Job is posted");
     router.push("/");
     /*   try {

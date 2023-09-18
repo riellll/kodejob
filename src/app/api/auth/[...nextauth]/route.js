@@ -46,46 +46,25 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async session({ session, user, token }) {
-      // store the user id from MongoDB to session
+    async jwt({ token, user }) {
       // console.log(user);
-      // console.log(token);
-      try {
-        const [sessionUser] = await User.find({ email: session.user.email });
-        //   console.log(sessionUser);
-        session.user.id = sessionUser._id.toString();
-        // console.log(session);
-        //
-        return session;
-      } catch (error) {
-        // console.log("Error checking if user existsa: ", error.message);
-        return false;
+      if (user?.id) {
+        token.id = user.id;
       }
+      //  if (user?.userName) {
+      //      token.userName = user.userName;
+      //  }
+      return token;
     },
-    async signIn({ account, profile, user, credentials }) {
-      try {
-        await connect();
-        // console.log(credentials);
-        // check if user already exists
-        const userExists = await User.findOne({
-          email: profile ? profile.email : credentials.email,
-        });
-        // console.log({ account, profile, user, credentials });
-        // if not, create a new document and save user in MongoDB
-        // console.log(userExists);
-        if (!userExists) {
-          await User.create({
-            name: profile.name.replace(" ", "").toLowerCase(),
-            email: profile.email,
-            image: profile.picture,
-          });
-        }
-
-        return true;
-      } catch (error) {
-        // console.log("Error checking if user exists: ", error.message);
-        return false;
-      }
+    async session({ session, token }) {
+      session.user.id = token.id;
+      // session.userName = token.userName;
+      // console.log(token,session);
+      return session;
+    },
+    async redirect({ url, baseUrl }) {
+      // console.log('HEllllooppoo' + baseUrl)
+      return baseUrl;
     },
   },
   pages: {
