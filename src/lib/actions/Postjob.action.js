@@ -41,7 +41,7 @@ export const postJobs = async (formData, image, creator, path) => {
       logo,
     });
   } catch (error) {
-    throw new Error(`Failed to create thread: ${error.message}`);
+    throw new Error(`Failed to create post: ${error.message}`);
   }
 
   revalidatePath("/");
@@ -83,7 +83,7 @@ export const editJobs = async (formData, image, id) => {
 
     await Job.findByIdAndUpdate(id, body);
   } catch (error) {
-    throw new Error(`Failed to create thread: ${error.message}`);
+    throw new Error(`Failed to edit post: ${error.message}`);
   }
 
   revalidatePath("/");
@@ -98,7 +98,7 @@ export const deletePost = async (id, path) => {
 
     await Job.findByIdAndDelete(id);
   } catch (error) {
-    throw new Error(`Failed to create thread: ${error.message}`);
+    throw new Error(`Failed to delete post: ${error.message}`);
   }
 
   revalidatePath(`/`);
@@ -113,7 +113,7 @@ export const searchPost = async () => {
     // console.log(res)
    
   } catch (error) {
-    throw new Error(`Failed to create thread: ${error.message}`);
+    throw new Error(`Failed to search post: ${error.message}`);
   }
 };
 
@@ -126,6 +126,6 @@ export const managePost = async (user) => {
     // console.log(res)
    
   } catch (error) {
-    throw new Error(`Failed to create thread: ${error.message}`);
+    throw new Error(`Failed to find post: ${error.message}`);
   }
 };

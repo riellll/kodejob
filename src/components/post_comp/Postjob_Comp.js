@@ -21,7 +21,7 @@ const Postjob_Comp = ({ sessionData }) => {
         redirect('/login')
       }
     }); */
-  console.log(sessionData);
+  // console.log(sessionData);
   // if (session === 'undefined') throw new AuthRequiredError("Error to fetch Data");
   const fileImage = async (e) => {
     // console.log(e.target.files[0]);
@@ -45,31 +45,14 @@ const Postjob_Comp = ({ sessionData }) => {
 
     alert("Job is posted");
     router.push("/");
-    /*   try {
-          await fetch(`/api/job`, {
-            method: "POST",
-            body: JSON.stringify({
-              creator,
-              web_url,
-              data,
-              email,
-              tags,
-              logo,
-            }),
-          });
-          alert("Job is posted");
-          router.push("/");
-          e.target.reset();
-        } catch (err) {
-          console.log(err);
-        } */
+   
   };
 
   return (
     <>
       <main>
         <div className="mx-4 mb-36">
-          <div className="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24">
+          <div className="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24 dark:bg-gray-800 dark:border-gray-700">
             <header className="text-center">
               <h2 className="text-2xl font-bold uppercase mb-1">
                 Create a Job Post
@@ -184,17 +167,18 @@ const Postjob_Comp = ({ sessionData }) => {
                   name="description"
                   rows="10"
                   placeholder="Include tasks, requirements, salary, etc"
+                  required
                 ></textarea>
               </div>
 
               <div className="mb-6">
-                <button className="bg-laravel text-white bg-indigo-600 rounded py-2 px-4 hover:bg-black">
+                <button className="bg-laravel text-white bg-indigo-600 rounded py-2 px-4 hover:bg-black dark:bg-gradient-to-r dark:from-teal-500 dark:via-teal-600 dark:to-teal-700">
                   Create Job
                 </button>
 
                 <Link
                   href="/"
-                  className="text-black ml-4 py-2.5 px-6 rounded hover:bg-black hover:text-white"
+                  className="text-black ml-4 py-2.5 px-6 rounded hover:bg-black hover:text-white dark:text-white dark:hover:text-white"
                 >
                   Back
                 </Link>

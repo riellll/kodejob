@@ -10,7 +10,7 @@ const Hero = async () => {
 
   // console.log(session);
   return (
-    <section className="relative h-72 bg-laravel bg-indigo-600 flex flex-col justify-center align-center text-center space-y-4 mb-4 bg-center">
+    <section className="relative h-72 bg-laravel bg-indigo-600 flex flex-col justify-center align-center text-center space-y-4 mb-4 bg-center dark:bg-gradient-to-r dark:from-teal-500 dark:via-teal-600 dark:to-teal-700">
       {/* <div
       className="bg-auto bg-no-repeat bg-center" style={{background-image: url(`http://127.0.0.1:5500/images/acme.png`)}}>
     </div> */}

@@ -16,14 +16,14 @@ const Search = () => {
   }
   return (
     <form onSubmit={searchJobs}>
-        <div className="relative border-2 border-gray-100 m-4 rounded-lg">
+        <div className="relative border-gray-100 m-4 rounded-lg">
           <div className="absolute top-4 left-3">
             <p className="fa fa-search text-gray-400 z-20 hover:text-gray-500"></p>
           </div>
           <input
             type="text"
             name="search"
-            className="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
+            className="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none text-gray-900 border border-gray-400 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
             placeholder="Search Web Developer jobs..."
             required
           />
