@@ -37,7 +37,7 @@ const Navbar = async () => {
               <li>
                 <Link
                   href="/login"
-                  className="text-white bg-gradient-to-r from-indigo-500 via-indigo-600 to-indigo-700 hover:bg-gradient-to-br focus:ring-4 dark:from-teal-500 dark:via-teal-600 dark:to-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2"
+                  className="text-white bg-gradient-to-r from-indigo-500 via-indigo-600 to-indigo-700 hover:bg-gradient-to-br dark:from-teal-500 dark:via-teal-600 dark:to-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2"
                 >
                   Login
                 </Link>
