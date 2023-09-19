@@ -8,14 +8,19 @@ import { editJobs } from "@/lib/actions/Postjob.action";
 
 const Post_Edit = ({ dataJob, dataId }) => {
   const [image, setImage] = useState([]);
+  const [imageData, setImageData] = useState([]);
+  const [postSuccess, setPostSuccess] = useState(false);
+  const [warning, setWarning] = useState("");
   const router = useRouter();
 
   const fileImage = async (e) => {
     // console.log(e.target.files[0]);
     if (!e.target.files[0]) {
       setImage([]);
+      setImageData([]);
       return;
     }
+    setImageData(e.target.files[0]);
     let reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
     reader.onload = () => {
@@ -28,11 +33,37 @@ const Post_Edit = ({ dataJob, dataId }) => {
   };
 
   const handleSubmit = async (formData) => {
-    const logo = image[0] ? image : dataJob.logo;
+    if (
+      !formData.get("email") ||
+      !formData.get("website") ||
+      !formData.get("tags") ||
+      !formData.get("company") ||
+      !formData.get("title") ||
+      !formData.get("location") ||
+      !formData.get("description")
+    ) {
+      setWarning("Please fill out all form.");
+      setTimeout(() => setWarning(""), 5000);
+      return;
+    }
+
+    formData.append("file", imageData);
+    formData.append("upload_preset", "kodejob-image-upload_preset");
+    formData.append("aoi_key", process.env.CLOUDINARY_API_KEY);
+
+    const results = await fetch(
+      "https://api.cloudinary.com/v1_1/dwiiuizwi/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    ).then((r) => r.json());
+
+    const logo = results.url ? results.url : dataJob.logo;
 
     await editJobs(formData, logo, dataJob._id);
 
-    alert("Job is posted");
+    setPostSuccess(true);
     router.push("/");
   };
 
@@ -130,8 +161,8 @@ const Post_Edit = ({ dataJob, dataId }) => {
           className="w-60 h-auto mb-6"
           src={image[0] ? image : dataJob.logo}
           alt=""
-          width={100}
-          height={100}
+          width={500}
+          height={500}
           priority
         />
       </div>
@@ -159,6 +190,24 @@ const Post_Edit = ({ dataJob, dataId }) => {
         >
           Back
         </Link>
+        {postSuccess && (
+          <div
+            className="p-4 text-sm text-center pt-4 text-green-800 rounded-lg dark:bg-gray-800 dark:text-green-400"
+            role="alert"
+          >
+            <span className="font-medium">Well done!</span> Your job post is
+            updated.
+          </div>
+        )}
+        {warning && (
+          <div
+            className="text-sm text-center pt-4 text-yellow-800 rounded-lg dark:bg-gray-800 dark:text-yellow-400"
+            role="alert"
+          >
+            <span className="font-medium">Warning! </span>
+            {warning}
+          </div>
+        )}
       </div>
     </form>
   );

@@ -21,6 +21,7 @@ const Body = ({ jobs, page }) => {
       <div className="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
         {/* <!-- Item 2 --> */}
         {jobs?.jobRec.map((item) => {
+          // console.log(item.logo)
           return (
             <div
               className="bg-gray-100 border border-gray-200 rounded p-6 dark:bg-gray-700 dark:border-gray-600"
@@ -30,9 +31,9 @@ const Body = ({ jobs, page }) => {
                 <Image
                   className="hidden w-48 max-h-40 mr-6 md:block"
                   src={item.logo}
-                  alt="asme"
-                  height={500}
-                  width={500}
+                  alt={item.data?.comapny}
+                  height={700}
+                  width={600}
                   priority
                 />
                 <div>
