@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter, redirect, usePathname } from "next/navigation";
 import Link from "next/link";
 import { postJobs } from "@/lib/actions/Postjob.action";
+import LoadingButton from "../shared/LoadingButton";
 
 // import Spinner from "../Spinner";
 
@@ -11,6 +12,7 @@ const Postjob_Comp = ({ sessionData }) => {
   const [image, setImage] = useState([]);
   const [imageData, setImageData] = useState([]);
   const [postSuccess, setPostSuccess] = useState(false);
+  const [postLoading, setPostLoading] = useState(false);
   const [warning, setWarning] = useState("");
   const pathname = usePathname();
   const router = useRouter();
@@ -50,6 +52,7 @@ const Postjob_Comp = ({ sessionData }) => {
   };
 
   const handleSubmit = async (formData) => {
+    setPostLoading(true)
     if (
       !formData.get("email") ||
       !formData.get("website") ||
@@ -60,12 +63,14 @@ const Postjob_Comp = ({ sessionData }) => {
       !formData.get("description")
     ) {
       setWarning("Please fill out all form.");
-      setTimeout(() => setWarning(''), 5000);
+      setPostLoading(false)
+      setTimeout(() => setWarning(''), 10000);
       return;
     }
     if (!image[0]) {
       setWarning("No image selected.");
-      setTimeout(() => setWarning(''), 5000);
+      setPostLoading(false)
+      setTimeout(() => setWarning(''), 10000);
       return;
     }
 
@@ -83,7 +88,7 @@ const Postjob_Comp = ({ sessionData }) => {
     // console.log(results.url)
     if (!results) return;
     await postJobs(formData, results.url, sessionData.toString(), pathname);
-
+    setPostLoading(false)
     setPostSuccess(true);
     router.push("/");
   };
@@ -197,7 +202,7 @@ const Postjob_Comp = ({ sessionData }) => {
 
         <div className="mb-9">
           <button className="bg-laravel text-white bg-indigo-600 rounded py-2 px-4 hover:bg-black dark:bg-gradient-to-r dark:from-teal-500 dark:via-teal-600 dark:to-teal-700">
-            Create Job
+            {postLoading ? <LoadingButton/> : 'Create Job'}
           </button>
 
           <Link
@@ -212,7 +217,7 @@ const Postjob_Comp = ({ sessionData }) => {
               role="alert"
             >
               <span className="font-medium">Well done!</span> Your job post is
-              success.
+              success you will redirect to home page.
             </div>
           )}
           {warning && (

@@ -69,7 +69,7 @@ const Body = ({ jobs, page }) => {
       </div>
 
       <div className="text-center">
-        <PaginationComp jobPage={jobs} page={page} />
+        <PaginationComp jobPage={jobs} page={Number(page)} />
       </div>
     </>
   );
