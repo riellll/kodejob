@@ -104,13 +104,25 @@ export const deletePost = async (id, path) => {
   revalidatePath(`/`);
   revalidatePath(path);
 };
-export const searchPost = async () => {
+export const searchPost = async (search) => {
   try {
     connect();
 
+/*     const res = await Job.find({
+      $or: [
+        { tags: { $regex: search } },
+        { 'data.company': search },
+        { 'data.title': search },
+      ]
+    });
+    console.log(res) */
+
+    // const res = await Job.find();
+    // const ress = JSON.stringify(res);
+
+
+    // return JSON.parse(ress);
     return await Job.find();
-    // const res = JSON.stringify(post);
-    // console.log(res)
    
   } catch (error) {
     throw new Error(`Failed to search post: ${error.message}`);

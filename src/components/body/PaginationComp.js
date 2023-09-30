@@ -10,7 +10,7 @@ const PaginationComp = ({ jobPage, page }) => {
 
   // const [jobData, getJobData] = useState([]);
   // const [currentPage, setCurrentPage] = useState(1);
-  console.log(typeof page)
+  // console.log(typeof page)
   return (
     <>
       <div className="text-center">

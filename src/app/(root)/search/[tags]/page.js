@@ -14,6 +14,7 @@ import Search from "@/components/shared/Search";
 import Image from "next/image";
 import { MdLocationOn } from "react-icons/md";
 import { searchPost } from "@/lib/actions/Postjob.action";
+// import SearchJobs from "@/components/search_comp/SearchJobs";
 // import jobData from "@/fetchData/Data";
 // import Skeleton from "@/app/components/Skeleton";
 export async function generateMetadata({ params }) {
@@ -25,11 +26,11 @@ export async function generateMetadata({ params }) {
 
 const SearchTag = async ({ params }) => {
   const { tags: searchTag } = params;
-  const jobs = await searchPost();
+  const jobs = await searchPost(searchTag.toLowerCase());
 
   const filterData = jobs?.filter(
     (item, index) =>
-      item.tags.includes(searchTag?.toLowerCase()) ||
+      item.tags.map(str => str.trim()).includes(searchTag?.toLowerCase()) ||
       item.data
         .get("location")
         .toLowerCase()
@@ -50,7 +51,7 @@ const SearchTag = async ({ params }) => {
         searchTag?.toLowerCase().split("%20").join(" ")
   );
 
-  // console.log(jobs)
+  // console.log(filterData)
   return (
     <>
       <Hero />
@@ -75,6 +76,7 @@ const SearchTag = async ({ params }) => {
 
       <div className="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4 mb-48">
         {/* {isLoading && <Skeleton />} */}
+        {/* <SearchJobs searchTag={searchTag} jobs={jobs} /> */}
         {filterData?.length === 0 && (
           <div>
             <h1 className="font-semibold">
