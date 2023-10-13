@@ -95,9 +95,9 @@ const Postjob_Comp = ({ sessionData }) => {
 
   return (
     <>
-      <form action={handleSubmit}>
+      <form action={handleSubmit} className="grid md:grid-cols-2 gap-5 pt-10">
         <div className="mb-6">
-          <label htmlFor="company" className="inline-block text-lg mb-2">
+          <label htmlFor="company" className="inline-block text-base mb-2 font-semibold dark:text-gray-300">
             Company Name
           </label>
           <input
@@ -108,7 +108,7 @@ const Postjob_Comp = ({ sessionData }) => {
         </div>
 
         <div className="mb-6">
-          <label htmlFor="title" className="inline-block text-lg mb-2">
+          <label htmlFor="title" className="inline-block text-base mb-2 font-semibold dark:text-gray-300">
             Job Title
           </label>
           <input
@@ -120,7 +120,7 @@ const Postjob_Comp = ({ sessionData }) => {
         </div>
 
         <div className="mb-6">
-          <label htmlFor="location" className="inline-block text-lg mb-2">
+          <label htmlFor="location" className="inline-block text-base mb-2 font-semibold dark:text-gray-300">
             Job Location
           </label>
           <input
@@ -132,7 +132,7 @@ const Postjob_Comp = ({ sessionData }) => {
         </div>
 
         <div className="mb-6">
-          <label htmlFor="email" className="inline-block text-lg mb-2">
+          <label htmlFor="email" className="inline-block text-base mb-2 font-semibold dark:text-gray-300">
             Contact Email
           </label>
           <input
@@ -143,7 +143,7 @@ const Postjob_Comp = ({ sessionData }) => {
         </div>
 
         <div className="mb-6">
-          <label htmlFor="website" className="inline-block text-lg mb-2">
+          <label htmlFor="website" className="inline-block text-base mb-2 font-semibold dark:text-gray-300">
             Website/Application URL
           </label>
           <input
@@ -154,7 +154,7 @@ const Postjob_Comp = ({ sessionData }) => {
         </div>
 
         <div className="mb-6">
-          <label htmlFor="tags" className="inline-block text-lg mb-2">
+          <label htmlFor="tags" className="inline-block text-base mb-2 font-semibold dark:text-gray-300">
             Tags (Comma Separated)
           </label>
           <input
@@ -166,7 +166,7 @@ const Postjob_Comp = ({ sessionData }) => {
         </div>
 
         <div className="mb-6">
-          <label htmlFor="logo" className="inline-block text-lg mb-2">
+          <label htmlFor="logo" className="inline-block text-base mb-2 font-semibold dark:text-gray-300">
             Company Logo
           </label>
           <input
@@ -189,7 +189,7 @@ const Postjob_Comp = ({ sessionData }) => {
         </div>
 
         <div className="mb-6">
-          <label htmlFor="description" className="inline-block text-lg mb-2">
+          <label htmlFor="description" className="inline-block text-base mb-2 font-semibold dark:text-gray-300">
             Job Description
           </label>
           <textarea

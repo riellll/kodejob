@@ -20,7 +20,7 @@ const Edit = async ({params}) => {
     <>
       <main>
         <div className="mx-4 mb-36">
-          <div className="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24 dark:bg-gray-800 dark:border-gray-700">
+          <div className="bg-gray-50 border border-gray-200 p-10 rounded min-w-lg mx-auto mt-24 dark:bg-gray-800 dark:border-gray-700">
             <header className="text-center">
               <h2 className="text-2xl font-bold uppercase mb-1">Edit Jobs</h2>
               <p className="mb-4">Edit: {jobData.data.title}</p>
