@@ -1,6 +1,6 @@
 "use client";
 import { signOut } from "next-auth/react";
-import Image from "next/image";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import testImage from "../../../public/testImage.png";
 import Link from "next/link";
 import {
@@ -15,17 +15,25 @@ import {
 } from "@/components/ui/menubar";
 
 const LogOutButton = ({session}) => {
+
   return (
     <Menubar>
       <MenubarMenu>
         <MenubarTrigger>
-          <Image
+        {/* <img src={'session.user.image || testImage'} alt='user photo' /> */}
+         {/*  <Image
             className="w-12 h-12 rounded-full cursor-pointer"
-            src={session.user.image || testImage}
+            src={session.user.image || '/testImage.png'}
             alt="user photo"
             width={300}
             height={300}
-          />
+          /> */}
+        <Avatar>
+        <AvatarImage asChild src={session.user.image || '/testImage.png'}>
+            <img src={session.user.image || '/testImage.png'} alt='user photo' className="cursor-pointer"/>
+        </AvatarImage>
+        {/* <AvatarFallback>CN</AvatarFallback> */}
+        </Avatar>
         </MenubarTrigger>
         <MenubarContent>
           <MenubarLabel>{session.user.name}</MenubarLabel>
