@@ -1,7 +1,7 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import LoginComp from "@/components/login_comp/LoginComp"
 import { getServerSession } from "next-auth"
-import { useRouter, redirect } from "next/navigation"
+import { redirect } from "next/navigation"
 
 
 export const metadata = {
