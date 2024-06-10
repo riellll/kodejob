@@ -29,7 +29,7 @@ const Search = () => {
           <div className="absolute top-2 right-2">
             <button
               type="submit"
-              className="h-10 w-20 text-white rounded-lg bg-blue-500 hover:bg-blue-600"
+              className="h-10 w-20 rounded-lg text-white bg-gradient-to-r from-indigo-500 via-indigo-600 to-indigo-700 hover:bg-gradient-to-br dark:from-teal-500 dark:via-teal-600 dark:to-teal-700"
             >
               Search
             </button>
