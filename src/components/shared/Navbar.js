@@ -1,6 +1,7 @@
 import Image from "next/image";
 import logo from "../../../public/logo.png";
 import Link from "next/link";
+import { SlGlobe } from "react-icons/sl";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import LogOutButton from "./LogOutButton";
@@ -20,15 +21,17 @@ const Navbar = async () => {
 
   return (
     <nav className="bg-white border-gray-200 dark:bg-slate-900">
-      <div className="flex flex-wrap items-center justify-between pb-4">
-        <div href="/" className="flex items-center">
-          <Link href={'/'}>
-        <h1 class="text-8xl bg-laravel bg-indigo-600 px-3 pb-1 w-fit font-bold leading-none tracking-tight md:text-8xl min-[320px]:text-7xl text-white dark:bg-gradient-to-r dark:from-teal-500 dark:via-teal-600 dark:to-teal-700">K<span className="text-black">J</span></h1>
-          </Link>
-        </div>
+      <div className="flex flex-wrap items-center justify-between mx-auto p-4">
+        <Link href="/" className="flex items-center justify-center gap-2">
+        <SlGlobe className="text-5xl text-indigo-700 font-extrabold dark:text-teal-600"/>
+        <h1 className="text-2xl bg-laravel w-fit font-extrabold leading-none tracking-tight lg:text-4xl text-indigo-700 dark:text-teal-600">KODEJOB</h1>
+          {/* <Link href={'/'}>
+        <h1 class="text-8xl bg-laravel bg-indigo-600 px-3 pb-1 w-fit font-bold leading-none tracking-tight md:text-8xl min-[320px]:text-7xl text-white dark:bg-gradient-to-r dark:from-teal-500 dark:via-teal-600 dark:to-teal-700">KODEJOB</h1>
+          </Link> */}
+        </Link>
 
         {/* {session.status === 'loading' ? <div><h1>...</h1></div> : undefined} */}
-        <div className="flex flex-wrap items-center justify-between md:w-auto pr-5 text-xl" id="navbar-default">
+        <div className="flex flex-wrap items-center justify-between md:w-auto text-xl" id="navbar-default">
           <div className="pr-8">
             <ToggleTheme/>
           </div>
